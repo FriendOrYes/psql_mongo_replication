@@ -65,10 +65,11 @@ namespace
 
             d["d"].Accept(writer);
             std::string data = buffer.GetString();
-
+                
+            rapidjson::Writer<rapidjson::StringBuffer> writer2(buffer);
             buffer.Clear();
 
-            d["c"].Accept(writer);
+            d["c"].Accept(writer2);
             std::string clause = buffer.GetString();
 
             subsriber->update(collection, data, clause);
